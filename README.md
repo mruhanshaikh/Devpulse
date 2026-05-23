@@ -1,4 +1,4 @@
-# ⚡ DevPulse — Your Developer Brain, Organised
+# ⚡[ DevPulse — Your Developer Brain, Organised](https://devpulsee.netlify.app/)
 
 A production-grade React productivity Web App that connects to your real GitHub account and surfaces your actual contribution data alongside local-first tools — Kanban board, code snippet vault, and Pomodoro focus timer — all in one dark-themed workspace.
 
