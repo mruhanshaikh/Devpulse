@@ -1,0 +1,242 @@
+.wrapper {
+  --cell-size: 11px;
+  --heatmap-gap: 3px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+/* SELECT */
+
+.yearSelect {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+
+  color: var(--text-primary);
+
+  padding: 7px 10px;
+  border-radius: 8px;
+
+  font-size: 0.74rem;
+  outline: none;
+
+  cursor: pointer;
+
+  transition: 0.15s;
+}
+
+.yearSelect:hover {
+  border-color: var(--border-bright);
+}
+
+.yearSelect:focus {
+  border-color: var(--accent);
+}
+
+/* SCROLL */
+
+.heatmapScroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding-bottom: 8px;
+
+  -webkit-overflow-scrolling: touch;
+
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10px,
+    black calc(100% - 10px),
+    transparent
+  );
+}
+
+.heatmapScroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.heatmapScroll::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+
+.heatmapInner {
+  position: relative;
+  width: max-content;
+  min-width: 100%;
+  padding-top: 24px;
+}
+
+/* MONTHS */
+
+.months {
+  position: absolute;
+  top: 0;
+  left: 32px;
+  height: 16px;
+}
+
+.month {
+  position: absolute;
+
+  font-size: 0.64rem;
+  color: var(--text-muted);
+
+  white-space: nowrap;
+}
+
+/* CONTENT */
+
+.heatmapContent {
+  display: flex;
+  gap: 8px;
+}
+
+/* WEEK LABELS */
+
+.weekLabels {
+  display: flex;
+  flex-direction: column;
+  gap: var(--heatmap-gap);
+}
+
+.weekDay {
+  height: var(--cell-size);
+
+  font-size: 0.62rem;
+  color: var(--text-muted);
+
+  display: flex;
+  align-items: center;
+}
+
+/* GRID */
+
+.grid {
+  display: flex;
+  gap: var(--heatmap-gap);
+}
+
+.weekCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--heatmap-gap);
+}
+
+/* CELLS */
+
+.cellWrap {
+  position: relative;
+}
+
+.day {
+  width: var(--cell-size);
+  height: var(--cell-size);
+
+  border-radius: 2px;
+  cursor: pointer;
+
+  transition:
+    transform 0.15s,
+    opacity 0.15s;
+}
+
+/* TOOLTIP */
+
+.tooltip {
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: #161b22;
+  border: 1px solid #30363d;
+
+  color: #f0f6fc;
+
+  padding: 5px 8px;
+  border-radius: 6px;
+
+  font-size: 0.68rem;
+  white-space: nowrap;
+
+  z-index: 40;
+  pointer-events: none;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+/* FOOTER */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.legend {
+  display: flex;
+  gap: 4px;
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+/* ERROR */
+
+.error {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* MOBILE */
+
+@media (max-width: 640px) {
+
+  .wrapper {
+    --cell-size: 10px;
+    --heatmap-gap: 3px;
+  }
+
+  .heatmapInner {
+    padding-top: 20px;
+  }
+
+  .month {
+    font-size: 0.58rem;
+  }
+
+}

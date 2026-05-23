@@ -1,0 +1,291 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(240px, 1fr)
+  );
+  gap: 16px;
+}
+
+.emptyWrap {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statRow {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(220px, 1fr)
+  );
+  gap: 14px;
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: repeat(
+    2,
+    minmax(0, 1fr)
+  );
+  gap: 16px;
+}
+
+@media (max-width: 920px) {
+  .charts {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chartCard {
+  padding: 18px;
+  overflow: hidden;
+}
+
+.chartHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.chartTitle {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.chartSub {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.tooltip {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  box-shadow: var(--shadow-lg);
+}
+
+.tooltipLabel {
+  font-size: 0.72rem;
+  margin-bottom: 8px;
+  color: var(--text-muted);
+}
+
+.tooltipItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 0.78rem;
+}
+
+.langList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.langRow {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.langTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.langInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.langDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.langName {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.langPercent {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.langBar {
+  height: 7px;
+  background: var(--bg-elevated);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.langBarFill {
+  height: 100%;
+  border-radius: inherit;
+}
+
+.scoreWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.scoreRing {
+  position: relative;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 160px;
+}
+
+.scoreCenter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.scoreNumber {
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.scoreLabel {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.repoCard {
+  padding: 18px;
+}
+
+.repoList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.repoRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  text-decoration: none;
+  transition:
+    border-color 0.2s,
+    transform 0.2s,
+    background 0.2s;
+}
+
+.repoRow:hover {
+  border-color: var(--border-bright);
+  transform: translateY(-2px);
+  background: var(--bg-hover);
+}
+
+.repoInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+  flex: 1;
+}
+
+.repoTop {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.repoName {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.repoDesc {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.repoMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.repoLang,
+.repoStat {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 640px) {
+  .chartCard {
+    padding: 14px;
+  }
+
+  .repoRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .repoMeta {
+    width: 100%;
+  }
+
+  .repoDesc {
+    white-space: normal;
+  }
+
+  .scoreRing {
+    width: 140px;
+    height: 140px;
+  }
+
+  .scoreNumber {
+    font-size: 2.2rem;
+  }
+}

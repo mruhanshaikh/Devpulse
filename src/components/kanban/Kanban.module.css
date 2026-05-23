@@ -1,0 +1,318 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(280px, 1fr));
+  gap: 14px;
+  align-items: start;
+}
+
+@media (max-width: 1100px) {
+  .board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .board {
+    grid-template-columns: 1fr;
+  }
+}
+
+.column {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  overflow: visible;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+}
+
+.column:hover {
+  border-color: var(--border-bright);
+}
+
+/* Highlight the whole column when a card hovers over an empty column */
+.columnDropTarget {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.columnHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.columnTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.columnDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.columnName {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+
+.columnCount {
+  font-size: 0.68rem;
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 2px 7px;
+  font-family: var(--font-mono);
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  color: var(--text-muted);
+  transition:
+    color 0.15s,
+    background 0.15s,
+    transform 0.15s;
+}
+
+.addBtn:hover {
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+  transform: scale(1.04);
+}
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  flex: 1;
+  min-height: 120px;
+}
+
+.taskCard {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 11px 12px;
+  cursor: grab;
+  transition:
+    border-color 0.18s,
+    transform 0.18s,
+    box-shadow 0.18s;
+  position: relative;
+  overflow: visible;
+}
+
+.taskCard:hover {
+  border-color: var(--border-bright);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.taskCard:active {
+  cursor: grabbing;
+}
+
+.dragging {
+  transform: rotate(2deg);
+  opacity: 0.92;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+.taskHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.taskDrag {
+  color: var(--text-muted);
+  cursor: grab;
+  margin-top: 1px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.taskTitle {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  flex: 1;
+  line-height: 1.45;
+  word-break: break-word;
+  padding-right: 26px;
+}
+
+.deleteBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  z-index: 20;
+  transition:
+    color 0.15s,
+    background 0.15s,
+    border-color 0.15s;
+}
+
+.deleteBtn:hover {
+  color: var(--red);
+  background: var(--red-dim);
+  border-color: rgba(255, 100, 100, 0.2);
+}
+
+.taskMeta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.priorityBadge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  padding: 2px 6px;
+  border-radius: 5px;
+  letter-spacing: 0.02em;
+}
+
+.taskTime {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+.addForm {
+  background: var(--bg-base);
+  border: 1px solid var(--border-bright);
+  border-radius: var(--radius-md);
+  padding: 11px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.addInput {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  outline: none;
+  width: 100%;
+  resize: none;
+  line-height: 1.5;
+}
+
+.addInput::placeholder {
+  color: var(--text-muted);
+}
+
+.addFormRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.select {
+  flex: 1;
+  min-width: 90px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 7px 8px;
+  outline: none;
+  cursor: pointer;
+}
+
+.select:focus {
+  border-color: var(--accent);
+}
+
+/* Empty drop zone — base */
+.emptyDropZone {
+  width: 100%;
+  min-height: 140px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    transform 0.15s;
+}
+.emptyDropActive {
+  border-color: var(--accent);
+  background: rgba(139, 92, 246, 0.08);
+  transform: scale(1.01);
+}
+
+/* Active state: a card is hovering directly over the empty zone */
+.emptyDropZoneActive {
+  border-color: var(--accent);
+  border-style: solid;
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  transform: scale(1.01);
+}
+
+@media (max-width: 680px) {
+  .board {
+    gap: 12px;
+  }
+
+  .column {
+    min-height: auto;
+  }
+
+  .taskCard {
+    padding: 12px;
+  }
+
+  .taskMeta {
+    gap: 6px;
+  }
+
+  .taskTime {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 4px;
+  }
+} 
