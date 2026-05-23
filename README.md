@@ -284,14 +284,3 @@ Every page component is loaded with `React.lazy()` and wrapped in `Suspense`. Th
 
 ### SVG-based data visualisation
 The activity heatmap and the Pomodoro progress ring are hand-rolled SVG rather than a charting library. This avoids a heavy dependency for simple visuals and gives full control over animation — the ring uses a `strokeDashoffset` transition driven by Framer Motion.
-
----
-
-## 📌 What I'd Add Next
-
-- **OAuth flow** — replace the PAT with proper GitHub OAuth (requires a small backend or edge function for the token exchange) to make it shareable with other users
-- **Backend sync** — replace localStorage with Supabase so data persists across devices and users
-- **Edit mode** — Kanban cards and snippets currently support add/delete; inline editing is the obvious next step
-- **Keyboard shortcuts** — Cmd+K command palette for navigation, mode switching in the Pomodoro timer
-- **Tests** — unit tests for all custom hooks and Zustand store actions; Playwright e2e for the Kanban drag interactions
-- **Virtual lists** — `react-window` for the Snippet Vault once the list grows beyond ~200 items
